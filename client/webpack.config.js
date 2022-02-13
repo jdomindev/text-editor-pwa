@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+// const WorkboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
@@ -12,7 +13,9 @@ module.exports = () => {
     mode: 'development',
     entry: {
       main: './src/js/index.js',
-      install: './src/js/install.js'
+      install: './src/js/install.js',
+      // header: './src/js/header.js',
+      // editor: './src/js/editor.js'
     },
     output: {
       filename: '[name].bundle.js',
@@ -24,21 +27,25 @@ module.exports = () => {
         title: 'JATE',
       }),
       new MiniCssExtractPlugin(),
+      // new WorkboxPlugin.GenerateSW(),
       new InjectManifest({
-        swSrc: './src/src-sw.js',
-        swDest: 'service-worker.js',
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'Just-Another-Text-Editor',
         short_name: 'JATE',
         description: 'This app is a text editor',
-        background_color: '#ffffff',
-        theme_color: '#ffffff',
+        background_color: '#225ca3',
+        theme_color: '#225ca3',
+        start_url: '/',
         publicPath: '/',
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
-            sizes: [96, 128, 192, 256, 384, 512], // multiple sizes
+            sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join('assets', 'icons')
           },
         ]
