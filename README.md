@@ -13,7 +13,7 @@
 ## Installation
 - No installation required just visit the deployed link.
 ## Usage
-- Github Repo: https://github.com/jdomindev/ecommerce-backend
+- Github Repo: https://github.com/jdomindev/text-editor-pwa
 - Heroku Deployed Link: https://radiant-ocean-33909.herokuapp.com/
 - Screenshots:
     ![Demo](./assets/screenshot-demo.png)
